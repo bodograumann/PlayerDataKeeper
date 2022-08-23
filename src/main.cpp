@@ -49,10 +49,6 @@ extern "C" void setup(ModInfo& info) {
         }
     } else {
         filesystem::create_directory(GetBackupPath());
-        for(auto const& file : filesystem::directory_iterator(DATA_PATH)) {
-            if(!filesystem::is_directory(file))
-                filesystem::copy(file, GetBackupPath() + file.path().filename().string(), copyopt);
-        }
     }
 	
     getLogger().info("Completed setup!");
